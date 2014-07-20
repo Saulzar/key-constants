@@ -3,8 +3,8 @@
     "summary": "Keyboard constants",
     "description": "Constants refering to keycodes",
     "license": "BSD3",
-    "exposed-modules": ["Keyboard.keys"],
-    "elm-version": "0.1",
+    "exposed-modules": ["Keyboard.Keys"],
+    "elm-version": "0.12.3",
     "dependencies": {},
     "repository": "https://github.com/jcollard/key-constants.git"
 }
