@@ -41,19 +41,14 @@ import Keyboard
 
 {-| Type alias to make it clearer what integers are supposed to represent.
 -}
-type Key =
- {keyCode: Keyboard.KeyCode
- ,name: String}
+type alias Key =
+  { keyCode: Keyboard.KeyCode
+  , name: String
+  }
 
 {-| Two Keys are equal if their keyCodes are equal -}
 equals : Key -> Key -> Bool
 equals k0 k1 = k0.keyCode == k1.keyCode
-
-directionKeys: Key -> Key -> Key -> Key -> Signal { x:Int, y:Int }
-directionKeys up down right left = Keyboard.directions up.keyCode down.keyCode right.keyCode left.keyCode
-
-isKeyDown : Key -> Signal Bool
-isKeyDown k = Keyboard.isDown k.keyCode
 
 a: Key
 a =

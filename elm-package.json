@@ -1,6 +1,6 @@
 {
     "version": "1.6.0",
-    "summary": ""Constants refering to keycodes",
+    "summary": "Constants refering to keycodes",
     "repository": "https://github.com/jcollard/key-constants.git",
     "license": "BSD3",
     "source-directories": [
@@ -12,5 +12,5 @@
     "dependencies": {
         "elm-lang/core": "2.1.0 <= v < 3.0.0"
     },
-    "elm-version": "0.14.0 <= v < 0.16.0"
+    "elm-version": "0.15.0 <= v < 0.16.0"
 }
