@@ -1,7 +1,7 @@
 {
     "version": "1.1.0",
-    "summary": "helpful summary of your project, less than 80 characters",
-    "repository": "https://github.com/USER/PROJECT.git",
+    "summary": ""Constants refering to keycodes",
+    "repository": "https://github.com/jcollard/key-constants.git",
     "license": "BSD3",
     "source-directories": [
         "."
@@ -10,5 +10,5 @@
     "dependencies": {
         "elm-lang/core": "2.1.0 <= v < 3.0.0"
     },
-    "elm-version": "0.15.0 <= v < 0.16.0"
+    "elm-version": "0.14.0 <= v < 0.16.0"
 }
