@@ -1,4 +1,28 @@
-module Keyboard.Keys where
+module Keyboard.Keys 
+ ( Key
+ , equals
+ , directionKeys
+ , isKeyDown
+ , a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z
+ , super
+ , meta
+ , windows
+ , commandLeft
+ , commandRight
+ , space
+ , enter
+ , arrowRight, arrowLeft, arrowUp, arrowDown
+ , backspace
+ , delete
+ , insert
+ , end
+ , home
+ , pageDown, pageUp
+ , escape
+ , f2, f4, f8, f9, f10
+ , one, two, three, four, five, six, seven, eight, nine, zero
+ )
+ where
 {-| Standard keyboard constants.
 
 # Data types
@@ -38,22 +62,71 @@ Note: undefined function keys have a conflict with the default keybindings of a 
 -}
 
 import Keyboard
+import Set
 
 {-| Type alias to make it clearer what integers are supposed to represent.
 -}
-type Key =
- {keyCode: Keyboard.KeyCode
- ,name: String}
+type alias Key =
+ { keyCode: Keyboard.KeyCode
+ , name: String
+ }
 
 {-| Two Keys are equal if their keyCodes are equal -}
 equals : Key -> Key -> Bool
-equals k0 k1 = k0.keyCode == k1.keyCode
+equals k0 k1 =
+ k0.keyCode == k1.keyCode
+
+
+{-| Key codes for different layouts. -}
+type alias Directions =
+ { up : Key
+ , down : Key
+ , left : Key
+ , right : Key
+ }
+
+
+dropMap : (a -> b) -> Signal a -> Signal b
+dropMap f signal =
+ Signal.dropRepeats (Signal.map f signal)
+
+
+{-| Extract an x and y value representing directions from a set of key codes
+that are currently pressed. For example, you can use this to define `wasd`
+like this:
+    wasd : Signal { x : Int, y : Int }
+    wasd =
+        Signal.map (toXY { up = 87, down = 83, left = 65, right = 68 }) keysDown
+-}
+toXY : Directions -> Set.Set Keyboard.KeyCode -> { x : Int, y : Int }
+toXY {up,down,left,right} keyCodes =
+ let is key =
+       if Set.member key.keyCode keyCodes
+         then 1
+         else 0
+ in
+  { x = (is right) - is left
+  , y = is up - is down
+  }
+
 
 directionKeys: Key -> Key -> Key -> Key -> Signal { x:Int, y:Int }
-directionKeys up down right left = Keyboard.directions up.keyCode down.keyCode right.keyCode left.keyCode
+directionKeys up down right left =
+ dropMap
+  (toXY
+   { up = up
+   , down = down
+   , left = left
+   , right = right
+   }
+  )
+  Keyboard.keysDown
+
 
 isKeyDown : Key -> Signal Bool
-isKeyDown k = Keyboard.isDown k.keyCode
+isKeyDown k =
+ Keyboard.isDown k.keyCode
+
 
 a: Key
 a =
