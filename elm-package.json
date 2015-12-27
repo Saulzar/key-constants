@@ -1,7 +1,7 @@
 {
     "version": "1.0.2",
     "summary": "Constants refering to keycodes",
-    "repository": "https://github.com/jcollard/key-constants.git",
+    "repository": "https://github.com/thSoft/key-constants.git",
     "license": "BSD3",
     "source-directories": [
         "."
