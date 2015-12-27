@@ -1,4 +1,4 @@
-module Keyboard.Keys 
+module Keyboard.Keys
  ( Key
  , equals
  , directionKeys
@@ -65,12 +65,13 @@ Note: undefined function keys have a conflict with the default keybindings of a 
 -}
 
 import Keyboard
+import Char
 import Set
 
 {-| Type alias to make it clearer what integers are supposed to represent.
 -}
 type alias Key =
- { keyCode: Keyboard.KeyCode
+ { keyCode: Char.KeyCode
  , name: String
  }
 
@@ -101,7 +102,7 @@ like this:
     wasd =
         Signal.map (toXY { up = 87, down = 83, left = 65, right = 68 }) keysDown
 -}
-toXY : Directions -> Set.Set Keyboard.KeyCode -> { x : Int, y : Int }
+toXY : Directions -> Set.Set Char.KeyCode -> { x : Int, y : Int }
 toXY {up,down,left,right} keyCodes =
  let is key =
        if Set.member key.keyCode keyCodes
@@ -156,169 +157,169 @@ d =
 
 {-|-}
 e: Key
-e = 
+e =
  {keyCode = 69
  ,name = "e"}
 
 {-|-}
 f: Key
-f = 
+f =
  {keyCode = 70
  ,name = "f"}
 
 {-|-}
 g: Key
-g = 
+g =
  {keyCode = 71
  ,name = "g"}
 
 {-|-}
 h: Key
-h = 
+h =
  {keyCode = 72
  ,name = "h"}
 
 {-|-}
 i: Key
-i = 
+i =
  {keyCode = 73
  ,name = "i"}
 
 {-|-}
 j: Key
-j = 
+j =
  {keyCode = 74
  ,name = "j"}
 
 {-|-}
 k: Key
-k = 
+k =
  {keyCode = 75
  ,name = "k"}
 
 {-|-}
 l: Key
-l = 
+l =
  {keyCode = 76
  ,name = "l"}
 
 {-|-}
 m: Key
-m = 
+m =
  {keyCode = 77
  ,name = "m"}
 
 {-|-}
 n: Key
-n = 
+n =
  {keyCode = 78
  ,name = "n"}
 
 {-|-}
 o: Key
-o = 
+o =
  {keyCode = 79
  ,name = "o"}
 
 {-|-}
 p: Key
-p = 
+p =
  {keyCode = 80
  ,name = "p"}
 
 {-|-}
 q: Key
-q = 
+q =
  {keyCode = 81
  ,name = "q"}
 
 {-|-}
 r: Key
-r = 
+r =
  {keyCode = 82
  ,name = "r"}
 
 {-|-}
 s: Key
-s = 
+s =
  {keyCode = 83
  ,name = "s"}
 
 {-|-}
 t: Key
-t = 
+t =
  {keyCode = 84
  ,name = "t"}
 
 {-|-}
 u: Key
-u = 
+u =
  {keyCode = 85
  ,name = "u"}
 
 {-|-}
 v: Key
-v = 
+v =
  {keyCode = 86
  ,name = "v"}
 
 {-|-}
 w: Key
-w = 
+w =
  {keyCode = 87
  ,name = "w"}
 
 {-|-}
 x: Key
-x = 
+x =
  {keyCode = 88
  ,name = "x"}
 
 {-|-}
 y: Key
-y = 
+y =
  {keyCode = 89
  ,name = "y"}
 
 {-|-}
 z: Key
-z = 
+z =
  {keyCode = 90
  ,name = "z"}
 
 {-|-}
 ctrl: Key
-ctrl = 
+ctrl =
  {keyCode = 17
  ,name = "Ctrl"}
 
 {-|-}
 shift: Key
-shift = 
+shift =
  {keyCode = 16
  ,name = "Shift"}
 
 {-|-}
 tab: Key
-tab = 
+tab =
  {keyCode = 9
  ,name = "Tab"}
 
 {-| super,meta,windows are all the same -}
 super: Key
-super = 
+super =
  {keyCode = 91
  ,name = "Super"}
 
 {-| super,meta,windows are all the same -}
 meta: Key
-meta = 
+meta =
  {keyCode = 91
  ,name = "Meta"}
 
 {-| super,meta,windows are all the same -}
 windows: Key
-windows = 
+windows =
  {keyCode = 91
  ,name = "Windows"}
 
@@ -336,85 +337,85 @@ commandRight =
 
 {-|-}
 space: Key
-space = 
+space =
  {keyCode = 32
  ,name = "Space"}
 
 {-|-}
 enter: Key
-enter = 
+enter =
  {keyCode = 13
  ,name = "Enter"}
 
 {-|-}
 arrowRight: Key
-arrowRight = 
+arrowRight =
  {keyCode = 37
  ,name = "Right arrow"}
 
 {-|-}
 arrowLeft: Key
-arrowLeft = 
+arrowLeft =
  {keyCode = 39
  ,name = "Left arrow"}
 
 {-|-}
 arrowUp: Key
-arrowUp = 
+arrowUp =
  {keyCode = 38
  ,name = "Up arrow"}
 
 {-|-}
 arrowDown: Key
-arrowDown = 
+arrowDown =
  {keyCode = 40
  ,name = "Down arrow"}
 
 {-|-}
 backspace: Key
-backspace = 
+backspace =
  {keyCode = 8
  ,name = "Backspace"}
 
 {-|-}
 delete: Key
-delete = 
+delete =
  {keyCode = 46
  ,name = "Delete"}
 
 {-|-}
 insert: Key
-insert = 
+insert =
  {keyCode = 45
  ,name = "Insert"}
 
 {-|-}
 end: Key
-end = 
+end =
  {keyCode = 35
  ,name = "End"}
 
 {-|-}
 home: Key
-home = 
+home =
  {keyCode = 36
  ,name = "Home"}
 
 {-|-}
 pageDown: Key
-pageDown = 
+pageDown =
  {keyCode = 34
  ,name = "Page down"}
 
 {-|-}
 pageUp: Key
-pageUp = 
+pageUp =
  {keyCode = 33
  ,name = "Page up"}
 
 {-|-}
 escape: Key
-escape = 
+escape =
  {keyCode = 27
  ,name = "Escape"}
 
@@ -422,91 +423,91 @@ escape =
 
 {-|-}
 f2: Key
-f2 = 
+f2 =
  {keyCode = 113
  ,name = "F2"}
 
 {-|-}
 f4: Key
-f4 = 
+f4 =
  {keyCode = 115
  ,name = "F4"}
 
 {-|-}
 f8: Key
-f8 = 
+f8 =
  {keyCode = 119
  ,name = "F8"}
 
 {-|-}
 f9: Key
-f9 = 
+f9 =
  {keyCode = 120
  ,name = "F9"}
 
 {-|-}
 f10: Key
-f10 = 
+f10 =
  {keyCode = 121
  ,name = "F10"}
 
 {-|-}
 one: Key
-one = 
+one =
  {keyCode = 49
  ,name = "1"}
 
 {-|-}
 two: Key
-two = 
+two =
  {keyCode = 50
  ,name = "2"}
 
 {-|-}
 three: Key
-three = 
+three =
  {keyCode = 51
  ,name = "3"}
 
 {-|-}
 four: Key
-four = 
+four =
  {keyCode = 52
  ,name = "4"}
 
 {-|-}
 five: Key
-five = 
+five =
  {keyCode = 53
  ,name = "5"}
 
 {-|-}
 six: Key
-six = 
+six =
  {keyCode = 54
  ,name = "6"}
 
 {-|-}
 seven: Key
-seven = 
+seven =
  {keyCode = 55
  ,name = "7"}
 
 {-|-}
 eight: Key
-eight = 
+eight =
  {keyCode = 56
  ,name = "8"}
 
 {-|-}
 nine: Key
-nine = 
+nine =
  {keyCode = 57
  ,name = "9"}
 
 {-|-}
 zero: Key
-zero = 
+zero =
  {keyCode = 58
  ,name = "0"}
 {-
