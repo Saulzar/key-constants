@@ -39,7 +39,7 @@ module Keyboard.Keys
 
 # Constants
 ## Function keys
-Note: undefined function keys have a conflict with the default keybindings of a well known browser.
+Note: undefined function keys have a conflict with the default keybindings of a well-known browser.
 
 @docs f2, f4, f8, f9, f10
 
@@ -305,25 +305,25 @@ tab =
  {keyCode = 9
  ,name = "Tab"}
 
-{-| super,meta,windows are all the same -}
+{-| The super, meta & windows keys are all the same. -}
 super: Key
 super =
  {keyCode = 91
  ,name = "Super"}
 
-{-| super,meta,windows are all the same -}
+{-| The super, meta & windows keys are all the same. -}
 meta: Key
 meta =
  {keyCode = 91
  ,name = "Meta"}
 
-{-| super,meta,windows are all the same -}
+{-| The super, meta & windows keys are all the same. -}
 windows: Key
 windows =
  {keyCode = 91
  ,name = "Windows"}
 
-{-| A key on mac keyboards. The same keycode as the windows/super/meta keys -}
+{-| A key on mac keyboards. The same keycode as the windows/super/meta keys. -}
 commandLeft: Key
 commandLeft =
  {keyCode = 91
