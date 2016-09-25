@@ -1,8 +1,6 @@
-module Keyboard.Keys
+module Keyboard.Keys exposing
  ( Key
  , equals
- , directionKeys
- , isKeyDown
  , a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z
  , shift
  , ctrl
@@ -25,7 +23,7 @@ module Keyboard.Keys
  , f2, f4, f8, f9, f10
  , one, two, three, four, five, six, seven, eight, nine, zero
  )
- where
+
 {-| Standard keyboard constants.
 
 # Data types
@@ -33,9 +31,6 @@ module Keyboard.Keys
 
 ## Equality
 @docs equals
-
-# Functions
-@docs directionKeys, isKeyDown
 
 # Constants
 ## Function keys
@@ -64,9 +59,7 @@ Note: undefined function keys have a conflict with the default keybindings of a 
 
 -}
 
-import Keyboard
 import Char
-import Set
 
 {-| Type alias to make it clearer what integers are supposed to represent.
 -}
@@ -79,57 +72,6 @@ type alias Key =
 equals : Key -> Key -> Bool
 equals k0 k1 =
  k0.keyCode == k1.keyCode
-
-
-{-| Key codes for different layouts. -}
-type alias Directions =
- { up : Key
- , down : Key
- , left : Key
- , right : Key
- }
-
-
-dropMap : (a -> b) -> Signal a -> Signal b
-dropMap f signal =
- Signal.dropRepeats (Signal.map f signal)
-
-
-{-| Extract an x and y value representing directions from a set of key codes
-that are currently pressed. For example, you can use this to define `wasd`
-like this:
-    wasd : Signal { x : Int, y : Int }
-    wasd =
-        Signal.map (toXY { up = 87, down = 83, left = 65, right = 68 }) keysDown
--}
-toXY : Directions -> Set.Set Char.KeyCode -> { x : Int, y : Int }
-toXY {up,down,left,right} keyCodes =
- let is key =
-       if Set.member key.keyCode keyCodes
-         then 1
-         else 0
- in
-  { x = (is right) - is left
-  , y = is up - is down
-  }
-
-{-|-}
-directionKeys: Key -> Key -> Key -> Key -> Signal { x:Int, y:Int }
-directionKeys up down right left =
- dropMap
-  (toXY
-   { up = up
-   , down = down
-   , left = left
-   , right = right
-   }
-  )
-  Keyboard.keysDown
-
-{-|-}
-isKeyDown : Key -> Signal Bool
-isKeyDown k =
- Keyboard.isDown k.keyCode
 
 {-|-}
 a: Key
@@ -419,7 +361,11 @@ escape =
  {keyCode = 27
  ,name = "Escape"}
 
--- We don't define the F keys that are not availiable.  AKA, F1 is help, F3 is search.  F5 is refresh. Those keys cannot be used.
+{-|-}
+f1: Key
+f1 =
+ {keyCode = 112
+ ,name = "F1"}
 
 {-|-}
 f2: Key
@@ -428,10 +374,34 @@ f2 =
  ,name = "F2"}
 
 {-|-}
+f3: Key
+f3 =
+ {keyCode = 114
+ ,name = "F3"}
+
+{-|-}
 f4: Key
 f4 =
  {keyCode = 115
  ,name = "F4"}
+
+{-|-}
+f5: Key
+f5 =
+ {keyCode = 116
+ ,name = "F5"}
+
+{-|-}
+f6: Key
+f6 =
+ {keyCode = 117
+ ,name = "F6"}
+
+{-|-}
+f7: Key
+f7 =
+ {keyCode = 118
+ ,name = "F7"}
 
 {-|-}
 f8: Key
@@ -450,6 +420,18 @@ f10: Key
 f10 =
  {keyCode = 121
  ,name = "F10"}
+
+{-|-}
+f11: Key
+f11 =
+ {keyCode = 122
+ ,name = "F11"}
+
+{-|-}
+f12: Key
+f12 =
+ {keyCode = 123
+ ,name = "F12"}
 
 {-|-}
 one: Key
